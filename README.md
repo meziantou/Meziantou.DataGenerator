@@ -38,5 +38,5 @@ You can add your own hints by using an xml file.
 - [Rex](http://research.microsoft.com/en-us/projects/rex/)
 
 ## TODO
-- If an error occurs while inserting a row, you will have less than expected row in the database
+- If an error occurs while inserting a row, you will have less than expected rows in the database
 - A better user interface (not that hard :))

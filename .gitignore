@@ -1,0 +1,5 @@
+Meziantou.DataGenerator.sln.ide
+obj/
+bin/
+*g.i.cs
+*.suo
