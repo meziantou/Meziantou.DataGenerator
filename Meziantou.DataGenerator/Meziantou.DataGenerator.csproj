@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C84D53B6-DB6A-4A5F-884A-8EEF8076E9BE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Meziantou.DataGenerator</RootNamespace>
+    <AssemblyName>Meziantou.DataGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CodeFluent.Runtime">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SoftFluent\CodeFluent\Modeler\CodeFluent.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeFluent.Runtime.Database">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SoftFluent\CodeFluent\Modeler\CodeFluent.Runtime.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Rex, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Rex.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\DataGenerators\BinaryGenerator.cs" />
+    <Compile Include="Core\DataGenerators\BooleanGenerator.cs" />
+    <Compile Include="Core\DataGenerators\BrandNameGenerator.cs" />
+    <Compile Include="Core\DataGenerators\CharacterSet.cs" />
+    <Compile Include="Core\DataGenerator.cs" />
+    <Compile Include="Core\DataGenerators\ColorFormat.cs" />
+    <Compile Include="Core\DataGenerators\ColorGenerator.cs" />
+    <Compile Include="Core\DataGenerators\CountryFormat.cs" />
+    <Compile Include="Core\DataGenerators\CountryGenerator.cs" />
+    <Compile Include="Core\DataGenerators\CultureFormat.cs" />
+    <Compile Include="Core\DataGenerators\CultureGenerator.cs" />
+    <Compile Include="Core\DataGenerators\DateGenerator.cs" />
+    <Compile Include="Core\DataGenerators\EmailGenerator.cs" />
+    <Compile Include="Core\DataGenerators\FileNameGenerator.cs" />
+    <Compile Include="Core\DataGenerators\FirstNameGenerator.cs" />
+    <Compile Include="Core\DataGenerators\ForeignKeyGenerator.cs" />
+    <Compile Include="Core\DataGenerators\FullNameGenerator.cs" />
+    <Compile Include="Core\DataGenerators\Gender.cs" />
+    <Compile Include="Core\DataGenerators\GenderGenerator.cs" />
+    <Compile Include="Core\DataGenerators\GuidGenerator.cs" />
+    <Compile Include="Core\DataGenerators\LipsumGenerator.cs" />
+    <Compile Include="Core\DataGenerators\PasswordFormat.cs" />
+    <Compile Include="Core\DataGenerators\PasswordGenerator.cs" />
+    <Compile Include="Core\DataGenerators\PhoneFormat.cs" />
+    <Compile Include="Core\DataGenerators\PhoneNumberGenerator.cs" />
+    <Compile Include="Core\DataGenerators\ReferentialData.cs" />
+    <Compile Include="Core\DataGenerators\RegexEmailGenerator.cs" />
+    <Compile Include="Core\DataGenerators\RegexGenerator.cs" />
+    <Compile Include="Core\DataGenerators\UserNameGenerator.cs" />
+    <Compile Include="Core\Hint.cs" />
+    <Compile Include="Core\DataGenerators\LastNameGenerator.cs" />
+    <Compile Include="Core\DataGenerators\LookupGenerator.cs" />
+    <Compile Include="Core\DataGenerators\NumberGenerator.cs" />
+    <Compile Include="Core\Project.cs" />
+    <Compile Include="Core\RowValues.cs" />
+    <Compile Include="Core\WellKnownDataType.cs" />
+    <Compile Include="Diagnostics\Logger.cs" />
+    <Compile Include="Diagnostics\LogType.cs" />
+    <Compile Include="Utilities\RandomUtilities.cs" />
+    <Compile Include="Core\ScriptWriter.cs" />
+    <Compile Include="Core\ScriptWriters\SqlScriptExecutor.cs" />
+    <Compile Include="Core\ScriptWriters\SqlScriptWriter.cs" />
+    <Compile Include="Core\DataGenerators\StringGenerator.cs" />
+    <Compile Include="Core\DataGenerators\StringLookupGenerator.cs" />
+    <Compile Include="Core\ScriptWriters\TeeScriptWriter.cs" />
+    <Compile Include="GenerationConfiguration.xaml.cs">
+      <DependentUpon>GenerationConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\EnumValuesExtension.cs" />
+    <Compile Include="Utilities\ConcatList.cs" />
+    <Compile Include="Utilities\WindowUtitilities.cs" />
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Design\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerationConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\RecentConnectionString.cs" />
+    <Compile Include="Core\Settings.cs" />
+    <Compile Include="Design\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Design\ConnectionStringComboBox.cs" />
+    <Compile Include="Design\ConnectionStringTextBox.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LastName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FirstNameFemale.txt" />
+    <EmbeddedResource Include="Resources\FirstNameMale.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmailDomainsWithoutTld.txt" />
+    <EmbeddedResource Include="Resources\tld.txt" />
+    <EmbeddedResource Include="Resources\EmailDomains.txt" />
+    <Content Include="Resources\Rex.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
