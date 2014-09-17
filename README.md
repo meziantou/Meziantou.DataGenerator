@@ -30,7 +30,13 @@ Currently there is no user interface to choose which data generator to use for e
 the system is clever (at least a little :)) and try to choose the best depending of different
 criteria such as column type and name.
 
-You can add your own hints by using an xml file.
+You can add your own hints to help choosing the right data generator by using an xml file.
+```
+<hints>
+  <hint typeName="data generator type name" table="table name pattern" column="column name pattern" />
+  <hint typeName="Meziantou.DataGenerator.Core.DataGenerators.ColorGenerator" column="Color$" />
+</hints>
+```
 
 ## Prerequisites
 
