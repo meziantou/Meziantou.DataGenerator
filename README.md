@@ -38,7 +38,7 @@ You can add your own hints to help choosing the right data generator by using an
 </hints>
 ```
 
-## Prerequisites
+## Dependencies
 
 - CodeFluent.Runtime & CodeFluent.Runtime.Database from [CodeFluent Entities](http://www.softfluent.com/products/codefluent-entities)
 - [Rex](http://research.microsoft.com/en-us/projects/rex/)
