@@ -1,6 +1,6 @@
 ﻿# Meziantou.DataGenerator
 
-Generate not so random data for your database.
+Generate not so random data for your SQL Server database.
 
 Many data generators exists:
 
@@ -37,6 +37,8 @@ You can add your own hints to help choosing the right data generator by using an
   <hint typeName="Meziantou.DataGenerator.Core.DataGenerators.ColorGenerator" column="Color$" />
 </hints>
 ```
+
+*Note: Tested only with SQL Server 2012.*
 
 ## Dependencies
 
