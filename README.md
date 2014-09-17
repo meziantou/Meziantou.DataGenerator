@@ -32,7 +32,7 @@ criteria such as column type and name.
 
 You can add your own hints by using an xml file.
 
-## Requirement
+## Prerequisites
 
 - CodeFluent.Runtime & CodeFluent.Runtime.Database from [CodeFluent Entities](http://www.softfluent.com/products/codefluent-entities)
 - [Rex](http://research.microsoft.com/en-us/projects/rex/)
