@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hints>
+  <!--<hint column="" typeName="Meziantou.DataGenerator.Core.DataGenerators." dataType="Unknown" />-->
+  <hint column="First.?Name" typeName="Meziantou.DataGenerator.Core.DataGenerators.FirstNameGenerator" />
+  <hint column="Last.?Name" typeName="Meziantou.DataGenerator.Core.DataGenerators.LastNameGenerator" />
+  <hint column="Full.?Name" typeName="Meziantou.DataGenerator.Core.DataGenerators.FullNameGenerator" />
+  <hint column="User.?Name|CreationUser|LastWriteUser" typeName="Meziantou.DataGenerator.Core.DataGenerators.UserNameGenerator" />
+  <hint column="File.?Name$" typeName="Meziantou.DataGenerator.Core.DataGenerators.FileNameGenerator" />
+  <hint column="Name$" typeName="Meziantou.DataGenerator.Core.DataGenerators.BrandNameGenerator" />
+  <hint column="Email" typeName="Meziantou.DataGenerator.Core.DataGenerators.EmailGenerator" />
+  <hint column="Culture|Lcid" typeName="Meziantou.DataGenerator.Core.DataGenerators.CultureGenerator" />
+  <hint column="Country|Location" typeName="Meziantou.DataGenerator.Core.DataGenerators.CountryGenerator" />
+  <hint column="Title|Gender" typeName="Meziantou.DataGenerator.Core.DataGenerators.GenderGenerator" />
+  <hint column="Password|SecurityStamp" typeName="Meziantou.DataGenerator.Core.DataGenerators.PasswordGenerator" />
+  <hint column="Count|Quantity|Qty" typeName="Meziantou.DataGenerator.Core.DataGenerators.NumberGenerator" minimum="0" dataType="Quantity" />
+  <hint column="StartDate" typeName="Meziantou.DataGenerator.Core.DataGenerators.DateGenerator" dataType="StartDate" />
+  <hint column="EndDate" typeName="Meziantou.DataGenerator.Core.DataGenerators.DateGenerator" dataType="EndDate" />
+  <hint column="DateOfBirth|BirthDate" typeName="Meziantou.DataGenerator.Core.DataGenerators.DateGenerator" dataType="DateOfBirth" minimum="1930/01/01" maximum="now" />
+  <hint column="(Creation|Last.?Write).?(Date|Time)|TimeStamp" typeName="Meziantou.DataGenerator.Core.DataGenerators.DateGenerator" maximum="now" />
+  <hint column="Percentage$" typeName="Meziantou.DataGenerator.Core.DataGenerators.NumberGenerator" minimum="0" maximum="100" />
+  <hint column="TotalPrice|TotalAmount|TotalCost" typeName="Meziantou.DataGenerator.Core.DataGenerators.NumberGenerator" minimum="0" dataType="TotalPrice" />
+  <hint column="Price|Cost" typeName="Meziantou.DataGenerator.Core.DataGenerators.NumberGenerator" minimum="0" dataType="UnitPrice" />
+  <hint column="Size" typeName="Meziantou.DataGenerator.Core.DataGenerators.NumberGenerator" minimum="0" />
+  <hint column="(Phone|Tel|Telephone)(Number)?$" typeName="Meziantou.DataGenerator.Core.DataGenerators.PhoneNumberGenerator" />
+  <hint column="PhoneNumberGenerator" typeName="Meziantou.DataGenerator.Core.DataGenerators.ColorGenerator" />
+
+</hints>
