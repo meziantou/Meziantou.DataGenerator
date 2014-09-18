@@ -172,6 +172,9 @@
     <EmbeddedResource Include="Resources\EmailDomainsWithoutTld.txt" />
     <EmbeddedResource Include="Resources\tld.txt" />
     <EmbeddedResource Include="Resources\EmailDomains.txt" />
+    <None Include="hints.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\Rex.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

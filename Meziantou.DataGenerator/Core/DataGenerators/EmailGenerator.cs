@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mail;
 using CodeFluent.Runtime.Database.Management;
 using Meziantou.DataGenerator.Utilities;
@@ -7,6 +8,8 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
 {
     public class EmailGenerator : DataGenerator
     {
+        readonly UserNameGenerator _userNameGenerator = new UserNameGenerator();
+
         public EmailGenerator()
         {
             WellKnownDataType = WellKnownDataType.Email;
@@ -52,7 +55,7 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
                 string lastName = project.CurrentRow.GetValue(WellKnownDataType.LastName) as string ?? Random.NextFromList(ReferentialData.LastNames);
                 string domain = Random.NextFromList(ReferentialData.EmailDomainsWithoutLld);
                 string tld = Random.NextFromList(ReferentialData.TopLevelDomains);
-                string username = project.CurrentRow.GetValue(WellKnownDataType.UserName) as string ?? Random.NextFromList(ReferentialData.UserNames);
+                string username = project.CurrentRow.GetValue(WellKnownDataType.UserName) as string ??_userNameGenerator.Generate(project, column, 1, 0).Cast<string>().First();
 
                 string format = Random.NextFromList(formats);
                 string email = string.Format(format, firstName, firstName[0], lastName, lastName[0], username, domain, tld);

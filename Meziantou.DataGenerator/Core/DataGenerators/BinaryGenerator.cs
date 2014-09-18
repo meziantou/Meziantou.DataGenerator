@@ -1,5 +1,7 @@
 using System;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
@@ -35,6 +37,14 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
             byte[] bytes = new byte[length];
             Random.NextBytes(bytes);
             return bytes;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+
+            MinimumLength = XmlUtilities.GetAttribute(element, "minimumLength", MinimumLength);
+            MaximumLength = XmlUtilities.GetAttribute(element, "maximumLength", MaximumLength);
         }
     }
 }

@@ -1,7 +1,9 @@
 using System;
 using System.Data;
 using System.Linq;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
 {
@@ -10,12 +12,19 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         private Guid? _sequentialGuid = null;
 
         public bool IsSequential { get; set; }
-        public Guid InitialGuid { get; set; }
+        public Guid InitialValue { get; set; }
 
         public GuidGenerator()
         {
             WellKnownDataType = WellKnownDataType.Guid;
             IsSequential = false;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            IsSequential = XmlUtilities.GetAttribute(element, "isSequential", IsSequential);
+            InitialValue = XmlUtilities.GetAttribute(element, "initialValue", InitialValue);
         }
 
         public override bool CanGenerate(Column column)
@@ -45,7 +54,7 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         {
             if (!_sequentialGuid.HasValue)
             {
-                _sequentialGuid = InitialGuid;
+                _sequentialGuid = InitialValue;
             }
             else
             {

@@ -1,6 +1,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
 using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
@@ -14,6 +15,12 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         public PasswordGenerator()
         {
             Format = PasswordFormat.Auto;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            Format = XmlUtilities.GetAttribute(element, "format", Format);
         }
 
         public override bool CanGenerate(Column column)

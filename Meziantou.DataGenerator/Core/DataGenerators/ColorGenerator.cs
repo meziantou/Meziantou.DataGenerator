@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Windows.Media;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
 using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
@@ -15,6 +16,12 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         {
             WellKnownDataType = WellKnownDataType.Color;
             Format = ColorFormat.Auto;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            Format = XmlUtilities.GetAttribute(element, "format", Format);
         }
 
         public override bool CanGenerate(Column column)

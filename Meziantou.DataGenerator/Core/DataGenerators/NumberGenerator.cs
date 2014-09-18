@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
 using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
@@ -8,8 +9,8 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
 {
     public class NumberGenerator : DataGenerator
     {
-        public object Maximum { get; set; }
         public object Minimum { get; set; }
+        public object Maximum { get; set; }
 
         public override bool CanGenerate(Column column)
         {
@@ -17,6 +18,13 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
                 return false;
 
             return IsNumericDbType(column.CodeFluentType.DbType);
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            Minimum = XmlUtilities.GetAttribute(element, "minimum", Minimum);
+            Maximum = XmlUtilities.GetAttribute(element, "maximum", Maximum);
         }
 
         protected override object GenerateCore(Project project, Column column)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
 using CodeFluent.Runtime.Utilities;
 
@@ -12,6 +13,12 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         public CountryGenerator()
         {
             WellKnownDataType = WellKnownDataType.Country;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            Format = XmlUtilities.GetAttribute(element, "format", Format);
         }
 
         protected override IEnumerable<object> LoadValues()

@@ -54,33 +54,8 @@ namespace Meziantou.DataGenerator.Core
                 AddHintsFromFile(hintPath, hints);
             }
 
-            // Maybe there is an hint file at executable level
+            // Load default hints
             AddHintsFromFile("hints.xml", hints);
-
-            // default Hints
-            hints.Add(new Hint(null, "First.?Name", new FirstNameGenerator()));
-            hints.Add(new Hint(null, "Last.?Name", new LastNameGenerator()));
-            hints.Add(new Hint(null, "Full.?Name", new FullNameGenerator()));
-            hints.Add(new Hint(null, "User.?Name|CreationUser|LastWriteUser", new UserNameGenerator()));
-            hints.Add(new Hint(null, "File.?Name$", new FileNameGenerator()));
-            hints.Add(new Hint(null, "Name$", new BrandNameGenerator()));
-            //hints.Add(new Hint("Name$", new StringGenerator() { CharacterSet = CharacterSet.LowerAlpha | CharacterSet.UpperAlpha | CharacterSet.Specials }));
-            hints.Add(new Hint(null, "Email", new EmailGenerator()));
-            hints.Add(new Hint(null, "Culture|Lcid", new CultureGenerator()));
-            hints.Add(new Hint(null, "Country|Location", new CountryGenerator()));
-            hints.Add(new Hint(null, "Title|Gender", new GenderGenerator()));
-            hints.Add(new Hint(null, "Password|SecurityStamp", new PasswordGenerator()));
-            hints.Add(new Hint(null, "Count|Quantity|Qty", new NumberGenerator() { Minimum = 0, WellKnownDataType = WellKnownDataType.Quantity }));
-            hints.Add(new Hint(null, "StartDate", new DateGenerator() { WellKnownDataType = WellKnownDataType.StartDate }));
-            hints.Add(new Hint(null, "EndDate", new DateGenerator() { WellKnownDataType = WellKnownDataType.EndDate }));
-            hints.Add(new Hint(null, "DateOfBirth|BirthDate", new DateGenerator() { WellKnownDataType = WellKnownDataType.DateOfBirth, Minimum = DateTime.Today.Subtract(TimeSpan.FromDays(365 * 100)), Maximum = DateTime.UtcNow }));
-            hints.Add(new Hint(null, "(Creation|Last.?Write).?(Date|Time)|TimeStamp", new DateGenerator() { Maximum = DateTime.UtcNow }));
-            hints.Add(new Hint(null, "Percentage$", new NumberGenerator() { Minimum = 0, Maximum = 100 }));
-            hints.Add(new Hint(null, "TotalPrice|TotalAmount|TotalCost", new NumberGenerator() { Minimum = 0, WellKnownDataType = WellKnownDataType.TotalPrice }));
-            hints.Add(new Hint(null, "Price|Cost", new NumberGenerator() { Minimum = 0, WellKnownDataType = WellKnownDataType.UnitPrice }));
-            hints.Add(new Hint(null, "Size", new NumberGenerator() { Minimum = 0 }));
-            hints.Add(new Hint(null, "(Phone|Tel|Telephone)(Number)?$", new PhoneNumberGenerator()));
-            hints.Add(new Hint(null, "Color$", new ColorGenerator()));
 
             // Add generators by priority
             List<DataGenerator> dataGenerators = new List<DataGenerator>();
@@ -145,7 +120,6 @@ namespace Meziantou.DataGenerator.Core
                         var tablePattern = XmlUtilities.GetAttribute<string>(node, "table", null);
                         var columnPattern = XmlUtilities.GetAttribute<string>(node, "column", null);
                         var generatorTypeName = XmlUtilities.GetAttribute<string>(node, "typeName", null);
-                        var seed = XmlUtilities.GetAttribute(node, "seed", -1);
 
                         if (generatorTypeName != null)
                         {
@@ -156,11 +130,7 @@ namespace Meziantou.DataGenerator.Core
                             try
                             {
                                 var dataGenerator = (DataGenerator)Activator.CreateInstance(type);
-                                if (seed != -1)
-                                {
-                                    dataGenerator.Seed = seed;
-                                }
-
+                                dataGenerator.Configure(node);
                                 hints.Add(new Hint(tablePattern, columnPattern, dataGenerator));
                             }
                             catch (Exception ex)

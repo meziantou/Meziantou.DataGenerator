@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Permissions;
 using System.Text;
+using CodeFluent.Runtime;
 using CodeFluent.Runtime.Database.Management;
 using Meziantou.DataGenerator.Diagnostics;
 

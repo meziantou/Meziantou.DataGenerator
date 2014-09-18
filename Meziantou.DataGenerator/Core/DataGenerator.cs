@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
 
 namespace Meziantou.DataGenerator.Core
@@ -33,7 +35,7 @@ namespace Meziantou.DataGenerator.Core
                 return _random;
             }
         }
-        
+
         public virtual int CompareTo(DataGenerator generator)
         {
             return 0;
@@ -176,6 +178,19 @@ namespace Meziantou.DataGenerator.Core
             var clone = (DataGenerator)this.MemberwiseClone();
             clone.Seed = RandomUtilities.Random.Next();
             return clone;
+        }
+
+        public virtual void Configure(XmlElement element)
+        {
+            if (element == null) throw new ArgumentNullException("element");
+
+            var seed = XmlUtilities.GetAttribute(element, "seed", (int?)null);
+            if (seed != null)
+            {
+                Seed = seed.Value;
+            }
+
+            WellKnownDataType = XmlUtilities.GetAttribute(element, "dataType", WellKnownDataType.Unknown);
         }
     }
 }

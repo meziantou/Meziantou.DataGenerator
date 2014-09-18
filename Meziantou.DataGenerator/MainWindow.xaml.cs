@@ -117,6 +117,10 @@ namespace Meziantou.DataGenerator
                     MessageBox.Show(exception.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             finally
             {
                 CircularProgressBar.Visibility = Visibility.Collapsed;

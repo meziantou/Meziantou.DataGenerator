@@ -1,5 +1,7 @@
 using System.Text;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
@@ -23,6 +25,17 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
 
             MinimumWords = 3;
             MaximumWords = 20;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            MinimumWords = XmlUtilities.GetAttribute(element, "minimumWords", MinimumWords);
+            MaximumWords = XmlUtilities.GetAttribute(element, "maximumWords", MaximumWords);
+            MinimumSentences = XmlUtilities.GetAttribute(element, "minimumSentences", MinimumSentences);
+            MaximumSentences = XmlUtilities.GetAttribute(element, "maximumSentences", MaximumSentences);
+            MinimumParagraphs = XmlUtilities.GetAttribute(element, "minimumParagraphs", MinimumParagraphs);
+            MaximumParagraphs = XmlUtilities.GetAttribute(element, "maximumParagraphs", MaximumParagraphs);
         }
 
         public override bool CanGenerate(Column column)

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 using Rex;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
@@ -17,6 +19,14 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         public RegexGenerator()
         {
             this.Encoding = CharacterEncoding.Unicode;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            RegexPattern = XmlUtilities.GetAttribute(element, "pattern", RegexPattern);
+            RegexOptions = XmlUtilities.GetAttribute(element, "regexOptions", RegexOptions);
+            Encoding = XmlUtilities.GetAttribute(element, "encoding", Encoding);
         }
 
         public override bool CanGenerate(Column column)

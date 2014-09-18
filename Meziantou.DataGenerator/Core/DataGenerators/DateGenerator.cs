@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Linq;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
 using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
@@ -24,6 +25,34 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
 
             MinimumOffset = -12 * 60;
             MaximumOffset = 14 * 60;
+        }
+
+        private DateTime GetDateTimeValue(XmlElement element, string attributeName, DateTime defaultValue)
+        {
+            string attribute = element.GetAttribute(attributeName);
+            if (attribute == null)
+                return defaultValue;
+
+            if (string.Equals(attribute, "now", StringComparison.OrdinalIgnoreCase))
+            {
+                return DateTime.Now;
+            }
+
+            if (string.Equals(attribute, "utcnow", StringComparison.OrdinalIgnoreCase))
+            {
+                return DateTime.UtcNow;
+            }
+
+            return ConvertUtilities.ChangeType(attribute, defaultValue);
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            Minimum = GetDateTimeValue(element, "minimum", Minimum);
+            Maximum = GetDateTimeValue(element, "maximum", Maximum);
+            MinimumOffset = XmlUtilities.GetAttribute(element, "minimumOffset", MinimumOffset);
+            MaximumOffset = XmlUtilities.GetAttribute(element, "maximumOffset", MaximumOffset);
         }
 
         public override int CompareTo(DataGenerator generator)

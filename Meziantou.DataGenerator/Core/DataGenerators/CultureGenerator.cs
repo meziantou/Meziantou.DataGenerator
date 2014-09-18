@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
 {
@@ -14,6 +16,13 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         {
             CultureTypes = CultureTypes.AllCultures;
             CultureFormat = CultureFormat.Auto;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            CultureTypes = XmlUtilities.GetAttribute(element, "cultureTypes", CultureTypes);
+            CultureFormat = XmlUtilities.GetAttribute(element, "cultureFormat", CultureFormat);
         }
 
         protected override IEnumerable<object> LoadValues()

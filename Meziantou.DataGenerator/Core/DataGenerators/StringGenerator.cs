@@ -1,5 +1,7 @@
 using System;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
@@ -16,6 +18,15 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
             MinimumLength = 0;
             MaximumLength = int.MaxValue;
             CharacterSet = CharacterSet.Unicode; // CharacterSet.LowerAlpha | CharacterSet.UpperAlpha | CharacterSet.Digits;
+        }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            MaximumLength = XmlUtilities.GetAttribute(element, "maximumLength", MaximumLength);
+            MinimumLength = XmlUtilities.GetAttribute(element, "minimumLength", MinimumLength);
+            CharacterSet = XmlUtilities.GetAttribute(element, "characterSet", CharacterSet);
+            Characters = XmlUtilities.GetAttribute(element, "characters", Characters);
         }
 
         public override bool CanGenerate(Column column)

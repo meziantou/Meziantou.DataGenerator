@@ -1,5 +1,7 @@
 using System;
+using System.Xml;
 using CodeFluent.Runtime.Database.Management;
+using CodeFluent.Runtime.Utilities;
 using Meziantou.DataGenerator.Utilities;
 
 namespace Meziantou.DataGenerator.Core.DataGenerators
@@ -12,6 +14,12 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         }
 
         public Gender Gender { get; set; }
+
+        public override void Configure(XmlElement element)
+        {
+            base.Configure(element);
+            Gender = XmlUtilities.GetAttribute(element, "gender", Gender);
+        }
 
         public override int CompareTo(DataGenerator generator)
         {
