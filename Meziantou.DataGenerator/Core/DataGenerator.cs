@@ -99,7 +99,7 @@ namespace Meziantou.DataGenerator.Core
 
         protected bool IsGeneratedColumn(Column column)
         {
-            return column.IsIdentity;
+            return column.IsIdentity || string.Equals(column.CodeFluentType.DataType, "timestamp", StringComparison.OrdinalIgnoreCase);
         }
 
         protected bool IsForeginKey(Column column)

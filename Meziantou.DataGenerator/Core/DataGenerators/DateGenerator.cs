@@ -30,7 +30,7 @@ namespace Meziantou.DataGenerator.Core.DataGenerators
         private DateTime GetDateTimeValue(XmlElement element, string attributeName, DateTime defaultValue)
         {
             string attribute = element.GetAttribute(attributeName);
-            if (attribute == null)
+            if (string.IsNullOrEmpty(attribute))
                 return defaultValue;
 
             if (string.Equals(attribute, "now", StringComparison.OrdinalIgnoreCase))
